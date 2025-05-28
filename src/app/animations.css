@@ -14,7 +14,7 @@
 .batch-card {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .batch-card:nth-child(1) {
@@ -27,6 +27,21 @@
 
 .batch-card:nth-child(3) {
   transition-delay: 0.5s;
+}
+
+.batch-card:hover {
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.1);
+}
+
+/* Timeline border animation */
+@keyframes borderFade {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
+}
+
+.timeline-border {
+  animation: borderFade 5s infinite ease-in-out;
 }
 
 /* Loading animation */
