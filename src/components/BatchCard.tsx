@@ -11,7 +11,7 @@ interface BatchCardProps {
 
 export default function BatchCard({ batch, applicationDate, applicationStatus, resultDate }: BatchCardProps) {
   return (
-    <div className="bg-zinc-900/90 rounded-md p-8 transition-all duration-300 batch-card hover:bg-zinc-900 border border-zinc-800">
+    <div className="bg-zinc-900/90 rounded-md p-8 transition-all duration-300 batch-card hover:bg-zinc-900 border border-zinc-800" style={{ opacity: 1 }}>
       <h3 className="text-orange-500 text-2xl font-medium mb-6">{batch}</h3>
       
       {/* Application Date Card */}

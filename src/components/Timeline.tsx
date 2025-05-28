@@ -9,10 +9,7 @@ export default function Timeline() {
       className="w-full bg-black py-16 md:py-24 px-4 md:px-8 lg:px-16 font-[var(--font-inter)] animate-on-scroll"
       style={{
         background: "black",
-        boxShadow: "inset 0 20px 20px -20px rgba(0,0,0,0.7)",
-        opacity: 0,
-        transform: "translateY(20px)",
-        transition: "opacity 0.6s ease, transform 0.6s ease"
+        boxShadow: "inset 0 20px 20px -20px rgba(0,0,0,0.7)"
       }}
     >
       <div className="max-w-6xl mx-auto">

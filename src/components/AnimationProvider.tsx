@@ -22,6 +22,12 @@ export default function AnimationProvider({ children }: AnimationProviderProps) 
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animated');
+          
+          // Also animate any batch cards inside this element
+          const batchCards = entry.target.querySelectorAll('.batch-card');
+          batchCards.forEach(card => {
+            card.classList.add('animated');
+          });
         }
       });
     }, { threshold: 0.1 });
