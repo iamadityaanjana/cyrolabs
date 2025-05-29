@@ -6,10 +6,11 @@ export default function Timeline() {
   return (
     <div 
       id="timeline" 
-      className="w-full bg-black py-16 md:py-24 px-4 md:px-8 lg:px-16 font-[var(--font-inter)] animate-on-scroll"
+      className="w-full bg-black py-16 md:py-24 px-4 md:px-8 lg:px-16 animate-on-scroll"
       style={{
         background: "black",
-        boxShadow: "inset 0 20px 20px -20px rgba(0,0,0,0.7)"
+        boxShadow: "inset 0 20px 20px -20px rgba(0,0,0,0.7)",
+        fontFamily: "Rany, system-ui, sans-serif"
       }}
     >
       <div className="max-w-6xl mx-auto">
@@ -24,16 +25,26 @@ export default function Timeline() {
 
         {/* Timeline Grid with Border */}
         <div className="relative mx-auto p-4">
-          {/* Border styling - orange border with gradient fade */}
-          <div className="absolute inset-0 border rounded-lg timeline-border" style={{
-            borderImage: 'linear-gradient(to right, transparent, #f97316 20%, #f97316 80%, transparent 100%) 1 0 100% 0',
-            borderImageSlice: '1',
-            borderWidth: '2px 0px',
-            opacity: '0.6',
+          {/* Border styling - orange border with opposite corners */}
+          <div className="absolute inset-0 timeline-border" style={{
+            borderTop: "2px solid #FF6B00",
+            borderRight: "2px solid #FF6B00",
+            borderBottom: "0px",
+            borderLeft: "0px",
+            boxShadow: "0 0 10px rgba(255, 107, 0, 0.4)",
+          }}></div>
+          
+          {/* Border styling - opposite corners */}
+          <div className="absolute inset-0 timeline-border" style={{
+            borderTop: "0px",
+            borderRight: "0px", 
+            borderBottom: "2px solid #FF6B00",
+            borderLeft: "2px solid #FF6B00",
+            boxShadow: "0 0 10px rgba(255, 107, 0, 0.4)",
           }}></div>
           
           {/* Timeline Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10 pb-12 px-4 md:px-12 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-16 pb-16 px-6 md:px-14 relative z-10">
           
             {/* Using the BatchCard component for each batch */}
             <BatchCard 

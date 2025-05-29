@@ -35,13 +35,15 @@
 
 /* Timeline border animation */
 @keyframes borderFade {
-  0% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-  100% { opacity: 0.4; }
+  0% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.5; }
 }
 
 .timeline-border {
-  animation: borderFade 5s infinite ease-in-out;
+  animation: borderFade 6s infinite ease-in-out;
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+  border-radius: 2px;
 }
 
 /* Loading animation */
