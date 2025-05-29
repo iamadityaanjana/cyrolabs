@@ -20,17 +20,17 @@ export default function AnimationProvider({ children }: AnimationProviderProps) 
     // Create the observer
     observer.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting || entry.target.id === 'timeline') {
           entry.target.classList.add('animated');
           
-          // Also animate any batch cards inside this element
-          const batchCards = entry.target.querySelectorAll('.batch-card');
-          batchCards.forEach(card => {
-            card.classList.add('animated');
+          // Also animate any elements inside this element
+          const animatedElements = entry.target.querySelectorAll('.batch-card, .corner-border');
+          animatedElements.forEach(el => {
+            el.classList.add('animated');
           });
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
     
     // Get all sections that need animation
     const sections = document.querySelectorAll('.animate-on-scroll');

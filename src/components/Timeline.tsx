@@ -1,75 +1,75 @@
-'use client'
+import React from 'react';
+import StatusCard from './ui/StatusCard';
 
-import BatchCard from './BatchCard';
+const Timeline = () => {
+  const batches = [
+    {
+      title: 'BATCH 1',
+      applicationDate: { title: 'Closed', date: 'Application Date' },
+      resultDate: { title: '15th June 2025', date: 'Result Date' }
+    },
+    {
+      title: 'BATCH 2',
+      applicationDate: { title: '4th June 2025', date: 'Application Date' },
+      resultDate: { title: '15th June 2025', date: 'Result Date' }
+    },
+    {
+      title: 'BATCH 3',
+      applicationDate: { title: '4th June 2025', date: 'Application Date' },
+      resultDate: { title: '15th June 2025', date: 'Result Date' }
+    }
+  ];
 
-export default function Timeline() {
   return (
-    <div 
-      id="timeline" 
-      className="w-full bg-black py-16 md:py-24 px-4 md:px-8 lg:px-16 animate-on-scroll"
-      style={{
-        background: "black",
-        boxShadow: "inset 0 20px 20px -20px rgba(0,0,0,0.7)",
-        fontFamily: "Rany, system-ui, sans-serif"
-      }}
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Timeline Header */}
-        <div className="flex justify-center items-center mb-16">
-          <div className="h-[1px] bg-orange-500/30 w-16 md:w-28 mr-6"></div>
-          <h2 className="text-white text-4xl md:text-5xl text-center font-normal tracking-wider uppercase">
-            TIMELINE
-          </h2>
-          <div className="h-[1px] bg-orange-500/30 w-16 md:w-28 ml-6"></div>
+    <div className="w-full min-h-screen bg-black text-white py-20 px-4" id='timeline'>
+      <h1 className="text-4xl font-bold text-center mb-16">TIMELINE</h1>
+      
+      <div className="max-w-7xl mx-auto relative">
+        {/* Border design with gradient fade */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          {/* Top-left to right gradient */}
+          <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-[#D35400] to-transparent" />
+          {/* Top-left to bottom gradient */}
+          <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#D35400] to-transparent" />
+          {/* Bottom-right to left gradient */}
+          <div className="absolute bottom-0 right-0 h-1 w-full bg-gradient-to-l from-[#D35400] to-transparent" />
+          {/* Bottom-right to top gradient */}
+          <div className="absolute bottom-0 right-0 w-1 h-full bg-gradient-to-t from-[#D35400] to-transparent" />
         </div>
-
-        {/* Timeline Grid with Border */}
-        <div className="relative mx-auto p-4">
-          {/* Border styling - orange border with opposite corners */}
-          <div className="absolute inset-0 timeline-border" style={{
-            borderTop: "2px solid #FF6B00",
-            borderRight: "2px solid #FF6B00",
-            borderBottom: "0px",
-            borderLeft: "0px",
-            boxShadow: "0 0 10px rgba(255, 107, 0, 0.4)",
-          }}></div>
+        
+        <div className="relative grid grid-cols-3 gap-8 p-8">
+          {/* Batch Headers */}
+          {batches.map((batch, index) => (
+            <div key={`header-${index}`} className="text-[#D35400] text-2xl font-bold mb-5">
+              {batch.title}
+            </div>
+          ))}
           
-          {/* Border styling - opposite corners */}
-          <div className="absolute inset-0 timeline-border" style={{
-            borderTop: "0px",
-            borderRight: "0px", 
-            borderBottom: "2px solid #FF6B00",
-            borderLeft: "2px solid #FF6B00",
-            boxShadow: "0 0 10px rgba(255, 107, 0, 0.4)",
-          }}></div>
+          {/* Application Date Cards (Row 2) */}
+          {batches.map((batch, index) => (
+            <StatusCard
+              key={`application-${index}`}
+              title={batch.applicationDate.title}
+              label={batch.applicationDate.date}
+              icon="notepad"
+              className="h-full"
+            />
+          ))}
           
-          {/* Timeline Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-16 pb-16 px-6 md:px-14 relative z-10">
-          
-            {/* Using the BatchCard component for each batch */}
-            <BatchCard 
-              batch="BATCH 1"
-              applicationDate=""
-              applicationStatus="closed"
-              resultDate="15th June 2025"
+          {/* Result Date Cards (Row 3) */}
+          {batches.map((batch, index) => (
+            <StatusCard
+              key={`result-${index}`}
+              title={batch.resultDate.title}
+              label={batch.resultDate.date}
+              icon="star"
+              className="h-full"
             />
-            
-            <BatchCard 
-              batch="BATCH 2"
-              applicationDate="4th June 2025"
-              applicationStatus="open"
-              resultDate="15th June 2025"
-            />
-            
-            <BatchCard 
-              batch="BATCH 3"
-              applicationDate="4th June 2025"
-              applicationStatus="open"
-              resultDate="15th June 2025"
-            />
-          </div>
+          ))}
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Timeline;

@@ -4,8 +4,8 @@
 /* Font import for Rany */
 @font-face {
   font-family: 'Rany';
-  src: url('/fonts/Rany-Regular.woff2') format('woff2'),
-       url('/fonts/Rany-Regular.woff') format('woff');
+  src: url('/fonts/Rany-Regular.otf2') format('otf2'),
+       url('/fonts/Rany-Regular.otf') format('otf');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -13,8 +13,8 @@
 
 @font-face {
   font-family: 'Rany';
-  src: url('/fonts/Rany-Medium.woff2') format('woff2'),
-       url('/fonts/Rany-Medium.woff') format('woff');
+  src: url('/fonts/Rany-Medium.otf2') format('otf2'),
+       url('/fonts/Rany-Medium.otf') format('otf');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -22,8 +22,8 @@
 
 @font-face {
   font-family: 'Rany';
-  src: url('/fonts/Rany-Bold.woff2') format('woff2'),
-       url('/fonts/Rany-Bold.woff') format('woff');
+  src: url('/fonts/Rany-Bold.otf2') format('otf2'),
+       url('/fonts/Rany-Bold.otf') format('otf');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
