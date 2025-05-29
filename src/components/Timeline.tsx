@@ -21,8 +21,8 @@ const Timeline = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-black text-white py-20 px-4" id='timeline'>
-      <h1 className="text-4xl font-bold text-center mb-16">TIMELINE</h1>
+    <div className="w-full min-h-screen bg-black text-white py-10 md:py-20 px-2 md:px-4" id='timeline'>
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16">TIMELINE</h1>
       
       <div className="max-w-7xl mx-auto relative">
         {/* Border design with gradient fade */}
@@ -37,10 +37,10 @@ const Timeline = () => {
           <div className="absolute bottom-0 right-0 w-1 h-full bg-gradient-to-t from-[#D35400] to-transparent" />
         </div>
         
-        <div className="relative grid grid-cols-3 gap-8 p-8">
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-4 md:p-8">
           {/* Batch Headers */}
           {batches.map((batch, index) => (
-            <div key={`header-${index}`} className="text-[#D35400] text-2xl font-bold mb-5">
+            <div key={`header-${index}`} className="text-[#D35400] text-xl md:text-2xl font-bold mb-3 md:mb-5 text-center md:text-left">
               {batch.title}
             </div>
           ))}
