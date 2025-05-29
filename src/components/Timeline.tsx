@@ -38,34 +38,65 @@ const Timeline = () => {
         </div>
         
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 p-4 md:p-8">
-          {/* Batch Headers */}
-          {batches.map((batch, index) => (
-            <div key={`header-${index}`} className="text-[#D35400] text-xl md:text-2xl font-bold mb-3 md:mb-5 text-center md:text-left">
-              {batch.title}
-            </div>
-          ))}
-          
-          {/* Application Date Cards (Row 2) */}
-          {batches.map((batch, index) => (
-            <StatusCard
-              key={`application-${index}`}
-              title={batch.applicationDate.title}
-              label={batch.applicationDate.date}
-              icon="notepad"
-              className="h-full"
-            />
-          ))}
-          
-          {/* Result Date Cards (Row 3) */}
-          {batches.map((batch, index) => (
-            <StatusCard
-              key={`result-${index}`}
-              title={batch.resultDate.title}
-              label={batch.resultDate.date}
-              icon="star"
-              className="h-full"
-            />
-          ))}
+          {/* Desktop Layout */}
+          <div className="hidden md:contents">
+            {/* Batch Headers */}
+            {batches.map((batch, index) => (
+              <div key={`header-${index}`} className="text-[#D35400] text-2xl font-bold mb-5 text-left">
+                {batch.title}
+              </div>
+            ))}
+            
+            {/* Application Date Cards */}
+            {batches.map((batch, index) => (
+              <StatusCard
+                key={`application-${index}`}
+                title={batch.applicationDate.title}
+                label={batch.applicationDate.date}
+                icon="notepad"
+                className="h-full"
+              />
+            ))}
+            
+            {/* Result Date Cards */}
+            {batches.map((batch, index) => (
+              <StatusCard
+                key={`result-${index}`}
+                title={batch.resultDate.title}
+                label={batch.resultDate.date}
+                icon="star"
+                className="h-full"
+              />
+            ))}
+          </div>
+
+          {/* Mobile Layout */}
+          <div className="md:hidden space-y-8">
+            {batches.map((batch, index) => (
+              <div key={`mobile-batch-${index}`} className="space-y-4">
+                {/* Batch Header */}
+                <div className="text-[#D35400] text-xl font-bold mb-3 text-center">
+                  {batch.title}
+                </div>
+                
+                {/* Application Date Card */}
+                <StatusCard
+                  title={batch.applicationDate.title}
+                  label={batch.applicationDate.date}
+                  icon="notepad"
+                  className="h-full"
+                />
+                
+                {/* Result Date Card */}
+                <StatusCard
+                  title={batch.resultDate.title}
+                  label={batch.resultDate.date}
+                  icon="star"
+                  className="h-full"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

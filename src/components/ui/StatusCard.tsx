@@ -25,7 +25,7 @@ const StatusCard: React.FC<StatusCardProps> = ({ title, label, className = '', i
       </div>
       
       {/* Status text */}
-      <div className="space-y-0.5 md:space-y-1 text-center md:text-left">
+      <div className="space-y-0.5 md:space-y-1 text-center pt-1 md:pt-10 md:text-left">
         <h3 className="text-lg md:text-2xl font-bold text-white">
           {title}
         </h3>
