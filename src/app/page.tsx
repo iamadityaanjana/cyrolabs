@@ -8,6 +8,7 @@ import HeroSection from "@/components/HeroSection";
 import AnimationProvider from "@/components/AnimationProvider";
 import SmoothScroll from "@/components/SmoothScroll";
 import Timeline from "@/components/Timeline";
+import Benefits from "@/components/Benefits";
 
 export default function Home() {
   // Loading state
@@ -39,8 +40,12 @@ export default function Home() {
         {/* Hero Section Component */}
         <HeroSection loading={loading} />
         
+        
+        
         {/* Timeline Section */}
         <Timeline />
+        {/* Benefits Section */}
+        <Benefits />
         
       </>
     </AnimationProvider>
