@@ -9,6 +9,7 @@ import AnimationProvider from "@/components/AnimationProvider";
 import SmoothScroll from "@/components/SmoothScroll";
 import Timeline from "@/components/Timeline";
 import Benefits from "@/components/Benefits";
+import VCInvestors from "@/components/VCInvestors";
 
 export default function Home() {
   // Loading state
@@ -46,6 +47,8 @@ export default function Home() {
         <Timeline />
         {/* Benefits Section */}
         <Benefits />
+
+        <VCInvestors/>
         
       </>
     </AnimationProvider>

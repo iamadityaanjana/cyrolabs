@@ -3,28 +3,28 @@
 <circle cx="116.5" cy="60.5" r="48" stroke="white" stroke-opacity="0.04"/>
 <path opacity="0.9" d="M119.688 32.4748C119.835 32.3076 119.981 32.1492 120.125 32C119.977 32.1584 119.832 32.3167 119.688 32.4748C116.092 36.5681 112.029 45.95 121.793 54.42C125.215 57.2911 130.416 65.1867 123.846 73.8L119.869 79.5L112.683 89C116.019 82.92 121.167 77.4485 112.683 70.2533C102.177 61.3439 106.908 50.4933 108.063 49.2267C107.293 52.3089 107.293 58.6 112.298 63.4133C109.633 58.9046 107.044 46.3715 119.688 32.4748Z" fill="white"/>
 <g filter="url(#filter0_f_97_258)">
-<circle cx="199" cy="34" r="20" transform="rotate(-90 199 34)" fill="#1C1C1C"/>
+<circle cx="199" cy="34" r="20" transform="rotate(-90 199 34)" fill="#303030"/>
 </g>
 <g filter="url(#filter1_f_97_258)">
-<circle cx="199" cy="86" r="20" transform="rotate(-90 199 86)" fill="#1C1C1C"/>
+<circle cx="199" cy="86" r="20" transform="rotate(-90 199 86)" fill="#303030"/>
 </g>
 <g filter="url(#filter2_f_97_258)">
-<circle cx="250" cy="34" r="20" transform="rotate(-90 250 34)" fill="#1C1C1C"/>
+<circle cx="250" cy="34" r="20" transform="rotate(-90 250 34)" fill="#303030"/>
 </g>
 <g filter="url(#filter3_f_97_258)">
-<circle cx="250" cy="86" r="20" transform="rotate(-90 250 86)" fill="#1C1C1C"/>
+<circle cx="250" cy="86" r="20" transform="rotate(-90 250 86)" fill="#303030"/>
 </g>
 <g filter="url(#filter4_f_97_258)">
-<circle cx="301" cy="34" r="20" transform="rotate(-90 301 34)" fill="#1C1C1C"/>
+<circle cx="301" cy="34" r="20" transform="rotate(-90 301 34)" fill="#303030"/>
 </g>
 <g filter="url(#filter5_f_97_258)">
-<circle cx="301" cy="86" r="20" transform="rotate(-90 301 86)" fill="#1C1C1C"/>
+<circle cx="301" cy="86" r="20" transform="rotate(-90 301 86)" fill="#303030"/>
 </g>
 <g filter="url(#filter6_f_97_258)">
-<circle cx="34" cy="86" r="20" transform="rotate(90 34 86)" fill="#1C1C1C"/>
+<circle cx="34" cy="86" r="20" transform="rotate(90 34 86)" fill="#303030"/>
 </g>
 <g filter="url(#filter7_f_97_258)">
-<circle cx="34" cy="34" r="20" transform="rotate(90 34 34)" fill="#1C1C1C"/>
+<circle cx="34" cy="34" r="20" transform="rotate(90 34 34)" fill="#303030"/>
 </g>
 <defs>
 <filter id="filter0_f_97_258" x="165" y="0" width="68" height="68" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
