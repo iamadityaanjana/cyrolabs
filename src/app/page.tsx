@@ -10,6 +10,10 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Timeline from "@/components/Timeline";
 import Benefits from "@/components/Benefits";
 import VCInvestors from "@/components/VCInvestors";
+import BatchResults from "@/components/ResultBatch";
+import { Frame } from "@/components/BatchFrame";
+
+
 
 export default function Home() {
   // Loading state
@@ -49,7 +53,9 @@ export default function Home() {
         <Benefits />
 
         <VCInvestors/>
+
         
+        <Frame/>
       </>
     </AnimationProvider>
   );

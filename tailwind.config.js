@@ -74,7 +74,19 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'spin-slow': 'spin 8s linear infinite', // For the inner circle rotation
+        'marquee-mobile': 'marquee 30s linear infinite', // For horizontal scroll on mobile
       },
+      keyframes:{
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        marquee:{
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
