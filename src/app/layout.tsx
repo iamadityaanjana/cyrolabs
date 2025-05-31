@@ -28,8 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{ fontFamily: 'Rany, system-ui, sans-serif' }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-rany`}
       >
         {children}
       </body>
