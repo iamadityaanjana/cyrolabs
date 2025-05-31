@@ -58,7 +58,7 @@ export default function HeroSection({ loading }: HeroSectionProps) {
             className="bg-orange-500 text-white py-3.5 px-8 md:px-10 rounded-md font-medium transition-all hover:bg-orange-600 inline-block text-base md:text-lg border-2 border-amber-500 "
             onClick={(e) => handleButtonClick(e, 'timeline')}
           >
-            Apply for Batch X
+            Apply for Batch 2
           </a>
         </div>
       </main>

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Cyro Labs x XION | House of Builders",
-  description: "XION House of Builders - Apply for Batch X",
+  description: "XION House of Builders - Apply for Batch 2",
   icons: {
     icon: '/favicon.ico',
   },

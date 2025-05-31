@@ -10,9 +10,9 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Timeline from "@/components/Timeline";
 import Benefits from "@/components/Benefits";
 import VCInvestors from "@/components/VCInvestors";
-import BatchResults from "@/components/ResultBatch";
 import { Frame } from "@/components/BatchFrame";
 import BottomBanner from "@/components/BottomBanner";
+import Footer from "@/components/Footer";
 
 
 
@@ -55,10 +55,11 @@ export default function Home() {
 
         <VCInvestors/>
 
-        
         <Frame/>
 
         <BottomBanner/>
+
+        <Footer/>
       </>
     </AnimationProvider>
   );
