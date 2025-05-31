@@ -151,21 +151,3 @@ body {
     text-wrap: balance;
   }
 }
-
-/* globals.css or your preferred CSS file */
-
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    /* Translate by 50% of the total content width (which is two sets of images) */
-    /* This makes one full set of images scroll past */
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll-left {
-  animation: scroll-left var(--scroll-speed, 30s) linear infinite;
-  /* Use a CSS variable for speed, allowing for easy customization */
-}
