@@ -4,16 +4,14 @@ import React from "react";
 const BATCHES = [
   { name: "FIRST BATCH" },
   { name: "SECOND BATCH" },
-  {name: "THIRD BATCH"}
-  // Add more batches as needed
+  { name: "THIRD BATCH" }
 ];
 
 const IMAGES_COUNT = 6;
 
 function CircularComingSoon() {
-  // SVG circular text with star in center
   return (
-    <div className="relative flex items-center justify-center w-24 h-24 mx-auto ">
+    <div className="relative flex items-center justify-center w-24 h-24 mx-auto">
       <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow">
         <defs>
           <path
@@ -34,21 +32,22 @@ function CircularComingSoon() {
   );
 }
 
-function InfiniteScrollImages() {
-  // Two sets for seamless infinite scroll, blur on the whole row
+function StaticImages() {
   return (
-    <div className="relative overflow-hidden w-full py-4 flex items-center justify-center">
-      {/* Gradient Fades */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
-
-      {/* Blurred overlay on the whole row */}
+    <div className="relative w-full py-4 flex items-center justify-center overflow-hidden">
+      {/* Strong gradient fades to hide overflow images naturally */}
+      <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 md:w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none" />
+      
+      {/* Blurred overlay */}
       <div className="absolute inset-0 z-10 pointer-events-none backdrop-blur-sm" />
-      <div className="flex gap-6 animate-infinite-scroll">
-        {[...Array(IMAGES_COUNT * 2)].map((_, i) => (
+      
+      {/* All images displayed - overflow will be naturally hidden by gradients */}
+      <div className="flex gap-3 sm:gap-4 md:gap-6 justify-center">
+        {[...Array(IMAGES_COUNT)].map((_, i) => (
           <div
             key={i}
-            className="relative w-32 h-40 md:w-40 md:h-52 rounded-xl overflow-hidden flex-shrink-0"
+            className="relative rounded-xl overflow-hidden flex-shrink-0 w-28 h-36 sm:w-32 sm:h-40 md:w-40 md:h-52"
           >
             <Image
               src="/image.png"
@@ -60,19 +59,12 @@ function InfiniteScrollImages() {
           </div>
         ))}
       </div>
+
       <style jsx>{`
-        @keyframes infinite-scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-infinite-scroll {
-          width: max-content;
-          animation: infinite-scroll 18s linear infinite;
-          /* Removed padding-left and padding-right to fix scroll jump */
-        }
         .animate-spin-slow {
           animation: spin 6s linear infinite;
         }
+        
         @keyframes spin {
           100% { transform: rotate(360deg); }
         }
@@ -92,10 +84,8 @@ export function Frame() {
           <div className="text-center mb-6">
             <span className="text-2xl md:text-4xl font-bold text-white tracking-wide">{batch.name}</span>
           </div>
-          {/* Container for images and the overlayed CircularComingSoon */}
           <div className="relative">
-            <InfiniteScrollImages />
-            {/* Centered circular coming soon, overlayed with higher z-index */}
+            <StaticImages />
             <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
               <CircularComingSoon />
             </div>
