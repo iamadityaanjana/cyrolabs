@@ -21,10 +21,13 @@ const Timeline = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-black text-white py-10 md:py-20 px-2 md:px-4" id='timeline'>
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16">TIMELINE</h1>
+    <div className="w-full min-h-screen bg-black text-white py-10 md:py-20 px-2 md:px-4 relative" id='timeline'>
+      {/* Top Gradient Overlay */}
+      <div className="absolute top-0 left-0 w-full h-32 md:h-48 bg-gradient-to-b from-black to-transparent pointer-events-none z-10" />
+
+      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 relative z-0">TIMELINE</h1>
       
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-7xl mx-auto relative z-0">
         {/* Border design with gradient fade */}
         <div className="absolute top-0 left-0 w-full h-full">
           {/* Top-left to right gradient */}
@@ -99,6 +102,9 @@ const Timeline = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom Gradient Overlay */}
+      <div className="absolute bottom-0 left-0 w-full h-32 md:h-48 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
     </div>
   );
 };

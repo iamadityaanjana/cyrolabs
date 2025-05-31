@@ -12,6 +12,7 @@ import Benefits from "@/components/Benefits";
 import VCInvestors from "@/components/VCInvestors";
 import BatchResults from "@/components/ResultBatch";
 import { Frame } from "@/components/BatchFrame";
+import BottomBanner from "@/components/BottomBanner";
 
 
 
@@ -56,6 +57,8 @@ export default function Home() {
 
         
         <Frame/>
+
+        <BottomBanner/>
       </>
     </AnimationProvider>
   );

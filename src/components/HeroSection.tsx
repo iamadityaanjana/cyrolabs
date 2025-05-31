@@ -22,7 +22,7 @@ export default function HeroSection({ loading }: HeroSectionProps) {
 
   return (
     <div 
-      className={`min-h-screen w-full flex flex-col items-center justify-between py-6 px-4 md:px-8 lg:px-16 font-[var(--font-inter)] overflow-hidden ${loading ? 'hidden' : 'block'}`}
+      className={`min-h-screen w-full flex flex-col items-center justify-between py-6 px-4 md:px-8 lg:px-16 font-[var(--font-inter)] overflow-hidden relative ${loading ? 'hidden' : 'block'}`}
       style={{
         backgroundImage: "url('/image (5).png')",
         backgroundSize: "cover",
@@ -65,6 +65,9 @@ export default function HeroSection({ loading }: HeroSectionProps) {
 
       {/* Empty footer to maintain spacing */}
       <footer className="w-full"></footer>
+
+      {/* Bottom Gradient Overlay */}
+      <div className="absolute bottom-0 left-0 w-full h-32 md:h-48 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </div>
   );
 }

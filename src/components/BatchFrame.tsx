@@ -4,6 +4,7 @@ import React from "react";
 const BATCHES = [
   { name: "FIRST BATCH" },
   { name: "SECOND BATCH" },
+  {name: "THIRD BATCH"}
   // Add more batches as needed
 ];
 
@@ -12,7 +13,7 @@ const IMAGES_COUNT = 6;
 function CircularComingSoon() {
   // SVG circular text with star in center
   return (
-    <div className="relative flex items-center justify-center w-24 h-24 mx-auto">
+    <div className="relative flex items-center justify-center w-24 h-24 mx-auto ">
       <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow">
         <defs>
           <path
@@ -20,7 +21,7 @@ function CircularComingSoon() {
             d="M50,50 m-35,0 a35,35 0 1,1 70,0 a35,35 0 1,1 -70,0"
           />
         </defs>
-        <text fill="#fff" fontSize="8" fontFamily="sans-serif">
+        <text fill="#fff" fontSize="14.5" fontFamily="sans-serif">
           <textPath xlinkHref="#circlePath" startOffset="0">
             COMING SOON COMING SOON COMING SOON
           </textPath>
@@ -82,7 +83,7 @@ function InfiniteScrollImages() {
 
 export function Frame() {
   return (
-    <div className="w-full px-2 md:px-0 max-w-6xl mx-auto">
+    <div className="w-full px-2 md:px-0 max-w-6xl mx-auto mt-5">
       {BATCHES.map((batch, idx) => (
         <div key={batch.name} className="mb-16 md:mb-24">
           <div className="text-center mb-2">
