@@ -54,9 +54,8 @@ export default function HeroSection({ loading }: HeroSectionProps) {
         
         <div className="mt-12 md:mt-16">
           <a 
-            href="#timeline" 
+            href="https://docs.google.com/forms/d/e/1FAIpQLScUFdK8VBnsPEieusmci9b3xzJeQUfQJ94BdMxKTS3j6BCU-g/viewform" 
             className="bg-orange-500 text-white py-3.5 px-8 md:px-10 rounded-md font-medium transition-all hover:bg-orange-600 inline-block text-base md:text-lg border-2 border-amber-500 "
-            onClick={(e) => handleButtonClick(e, 'timeline')}
           >
             Apply for Batch 2
           </a>

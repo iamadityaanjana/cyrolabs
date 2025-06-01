@@ -8,7 +8,7 @@ export default function Footer() {
     e.preventDefault();
     // Attempt to scroll to a section with ID 'timeline'
     // You can change 'timeline' to whatever section "Apply Now" should link to
-    const targetElement = document.getElementById('timeline');
+    const targetElement = document.getElementById('https://docs.google.com/forms/d/e/1FAIpQLScUFdK8VBnsPEieusmci9b3xzJeQUfQJ94BdMxKTS3j6BCU-g/viewform');
     if (targetElement) {
       window.scrollTo({
         top: targetElement.offsetTop,
@@ -51,8 +51,7 @@ export default function Footer() {
             &copy;{new Date().getFullYear()} Xion house of builders
           </p>
           <a
-            href="#timeline" // Default link, adjust as needed
-            onClick={handleApplyNowClick}
+            href="https://docs.google.com/forms/d/e/1FAIpQLScUFdK8VBnsPEieusmci9b3xzJeQUfQJ94BdMxKTS3j6BCU-g/viewform" // Default link, adjust as needed
             className="text-gray-400 hover:text-white transition-colors"
           >
             Apply Now

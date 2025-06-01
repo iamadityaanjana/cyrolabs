@@ -100,9 +100,8 @@ export default function Navigation({ onNavigate }: NavigationProps) {
             About
           </a>
           <a 
-            href="#apply" 
+            href="https://docs.google.com/forms/d/e/1FAIpQLScUFdK8VBnsPEieusmci9b3xzJeQUfQJ94BdMxKTS3j6BCU-g/viewform" 
             className="bg-orange-500 text-white px-4 py-2 rounded transition-all hover:bg-orange-600 text-sm md:text-base"
-            onClick={(e) => handleLinkClick(e, 'apply')}
           >
             Apply
           </a>
@@ -132,9 +131,8 @@ export default function Navigation({ onNavigate }: NavigationProps) {
               About
             </a>
             <a 
-              href="#apply" 
+              href="https://docs.google.com/forms/d/e/1FAIpQLScUFdK8VBnsPEieusmci9b3xzJeQUfQJ94BdMxKTS3j6BCU-g/viewform" 
               className="bg-orange-500 text-white px-4 py-2 rounded transition-all hover:bg-orange-600 text-lg text-center"
-              onClick={(e) => handleLinkClick(e, 'apply')}
             >
               Apply
             </a>
