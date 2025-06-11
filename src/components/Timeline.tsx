@@ -11,12 +11,12 @@ const Timeline = () => {
     {
       title: 'BATCH 2',
       applicationDate: { title: '1st June 2025', date: 'Application Date' },
-      resultDate: { title: '14th June 2025', date: 'Result Date' }
+      resultDate: { title: '1st July 2025', date: 'Result Date' }
     },
     {
       title: 'BATCH 3',
-      applicationDate: { title: '9th June 2025', date: 'Application Date' },
-      resultDate: { title: '21st June 2025', date: 'Result Date' }
+      applicationDate: { title: '15th June 2025', date: 'Application Date' },
+      resultDate: { title: '10th July 2025', date: 'Result Date' }
     }
   ];
 
