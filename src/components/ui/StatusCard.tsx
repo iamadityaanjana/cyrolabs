@@ -9,9 +9,9 @@ interface StatusCardProps {
 }
 
 const StatusCard: React.FC<StatusCardProps> = ({ title, label, className = '', icon = 'notepad' }) => {
-  const iconSrc = icon === 'notepad' 
-    ? '/image (6).png'
-    : '/fe730c77dfbd4a12e3d181e39ed2c095cf853d27.png';
+  const iconSrc = icon === 'notepad'
+    ? '/image-6.webp'
+    : '/star-icon.webp';
   
   return (
     <div className={`flex flex-col items-center md:items-start space-y-2 md:space-y-3 p-3 md:p-4 bg-[#1A1A1A] rounded-lg ${className}`}>

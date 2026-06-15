@@ -1,152 +1,134 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
-interface NavigationProps {
-  onNavigate?: () => void; // Optional callback for when navigation occurs
-}
-
-export default function Navigation({ onNavigate }: NavigationProps) {
+export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    // Initial check
-    checkScreenSize();
-    
-    // Add event listener for window resize
-    window.addEventListener('resize', checkScreenSize);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', checkScreenSize);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth'
-      });
-    }
-    
-    // Close mobile menu if open
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-    }
-    
-    // Call the onNavigate callback if provided
-    if (onNavigate) {
-      onNavigate();
-    }
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
+  const navLinks = [
+    { label: 'Work', id: 'what-we-built' },
+    { label: 'Services', id: 'services' },
+    { label: 'Technology', id: 'tech-stack' },
+    { label: 'About', id: 'why-cyrolabs' },
+  ];
+
   return (
-    <header className="w-full flex flex-col md:flex-row md:justify-between items-center pt-4 md:pt-6">
-      <div className="flex items-center gap-2 md:gap-4 mb-4 md:mb-0">
-        <Image
-          src="/svgviewer-output.svg"
-          alt="XION Logo"
-          width={200}
-          height={60}
-          className="h-auto"
-          priority
-        />
+    <motion.header
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-black/90 backdrop-blur-md border-b border-white/5'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 flex items-center justify-between h-16 md:h-20">
+        {/* Logo */}
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center gap-2.5 group"
+        >
+          <div
+            className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110"
+            style={{ background: 'linear-gradient(135deg, #FF6B35, #FF8C42)' }}
+          >
+            <span className="text-white font-bold text-sm">CL</span>
+          </div>
+          <span className="text-white font-semibold text-lg tracking-tight">Cyro Labs</span>
+        </button>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className="text-white/70 hover:text-white transition-colors text-sm font-medium"
+            >
+              {link.label}
+            </button>
+          ))}
+          <button
+            onClick={() => scrollTo('cta')}
+            className="text-white text-sm font-medium px-5 py-2 rounded-lg transition-all hover:opacity-90 active:scale-95"
+            style={{ background: '#FF6B35' }}
+          >
+            Partner With Us
+          </button>
+        </nav>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="md:hidden text-white p-2"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <div className="w-6 flex flex-col gap-1.5">
+            <span
+              className={`block h-0.5 bg-white transition-all duration-300 ${
+                isMenuOpen ? 'rotate-45 translate-y-2' : ''
+              }`}
+            />
+            <span
+              className={`block h-0.5 bg-white transition-all duration-300 ${
+                isMenuOpen ? 'opacity-0' : ''
+              }`}
+            />
+            <span
+              className={`block h-0.5 bg-white transition-all duration-300 ${
+                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+              }`}
+            />
+          </div>
+        </button>
       </div>
 
-      {/* Mobile Menu Button */}
-      {isMobile && (
-        <button
-          className="absolute top-6 right-4 text-white focus:outline-none z-30"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {isMenuOpen ? (
-            // Close Icon (X)
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            // Menu Icon (Hamburger)
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
-      )}
-
-      {/* Desktop Navigation */}
-      {!isMobile && (
-        <nav className="flex items-center space-x-6 md:space-x-10">
-          <a 
-            href="#timeline" 
-            className="text-white hover:text-orange-400 transition-colors text-sm md:text-base"
-            onClick={(e) => handleLinkClick(e, 'timeline')}
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/5"
           >
-            Timeline
-          </a>
-          <a 
-            href="#about" 
-            className="text-white hover:text-orange-400 transition-colors text-sm md:text-base"
-            onClick={(e) => handleLinkClick(e, 'about')}
-          >
-            About
-          </a>
-          <a 
-            href="https://docs.google.com/forms/d/e/1FAIpQLScUFdK8VBnsPEieusmci9b3xzJeQUfQJ94BdMxKTS3j6BCU-g/viewform" 
-            className="bg-orange-500 text-white px-4 py-2 rounded transition-all hover:bg-orange-600 text-sm md:text-base"
-          >
-            Apply
-          </a>
-        </nav>
-      )}
-
-      {/* Mobile Navigation Menu */}
-      {isMobile && (
-        <nav 
-          className={`fixed top-0 right-0 h-full w-64 bg-zinc-900 z-20 transform transition-transform duration-300 ease-in-out ${
-            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          } pt-20 px-6 shadow-xl`}
-        >
-          <div className="flex flex-col space-y-6">
-            <a 
-              href="#timeline" 
-              className="text-white hover:text-orange-400 transition-colors text-lg"
-              onClick={(e) => handleLinkClick(e, 'timeline')}
-            >
-              Timeline
-            </a>
-            <a 
-              href="#about" 
-              className="text-white hover:text-orange-400 transition-colors text-lg"
-              onClick={(e) => handleLinkClick(e, 'about')}
-            >
-              About
-            </a>
-            <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLScUFdK8VBnsPEieusmci9b3xzJeQUfQJ94BdMxKTS3j6BCU-g/viewform" 
-              className="bg-orange-500 text-white px-4 py-2 rounded transition-all hover:bg-orange-600 text-lg text-center"
-            >
-              Apply
-            </a>
-          </div>
-        </nav>
-      )}
-
-      {/* Overlay for mobile menu */}
-      {isMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-10"
-          onClick={() => setIsMenuOpen(false)}
-        ></div>
-      )}
-    </header>
+            <div className="px-6 py-6 flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollTo(link.id)}
+                  className="text-white/70 hover:text-white text-left text-lg font-medium transition-colors"
+                >
+                  {link.label}
+                </button>
+              ))}
+              <button
+                onClick={() => scrollTo('cta')}
+                className="text-white font-medium px-5 py-3 rounded-lg text-center transition-all"
+                style={{ background: '#FF6B35' }}
+              >
+                Partner With Us
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }

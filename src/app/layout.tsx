@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cyro Labs x XION | House of Builders",
-  description: "XION House of Builders - Apply for Batch 2",
+  title: "Cyro Labs — Building Products, Communities & Startup Ecosystems",
+  description: "Cyro Labs helps founders, startups, and ecosystems launch products, grow communities, and scale innovation through fellowships, hackathons, and world-class development.",
   icons: {
     icon: '/favicon.ico',
   },
