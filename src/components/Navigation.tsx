@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,15 +42,16 @@ export default function Navigation() {
         {/* Logo */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="flex items-center gap-2.5 group"
+          className="flex items-center group"
         >
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110"
-            style={{ background: 'linear-gradient(135deg, #FF6B35, #FF8C42)' }}
-          >
-            <span className="text-white font-bold text-sm">CL</span>
-          </div>
-          <span className="text-white font-semibold text-lg tracking-tight">Cyro Labs</span>
+          <Image
+            src="/logo.svg"
+            alt="Cyro Labs"
+            width={120}
+            height={17}
+            priority
+            className="transition-opacity group-hover:opacity-80"
+          />
         </button>
 
         {/* Desktop Nav */}

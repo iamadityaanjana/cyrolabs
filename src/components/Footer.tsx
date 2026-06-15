@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function Footer() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -15,14 +17,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-4">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #FF6B35, #FF8C42)' }}
-              >
-                <span className="text-white font-bold text-sm">CL</span>
-              </div>
-              <span className="text-white font-semibold text-lg">Cyro Labs</span>
+            <div className="mb-4">
+              <Image
+                src="/logo.svg"
+                alt="Cyro Labs"
+                width={120}
+                height={17}
+              />
             </div>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
               Building products, communities, and startup ecosystems. We help founders launch
