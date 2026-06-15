@@ -97,7 +97,7 @@ function Card({ card, index }: { card: typeof cards[0]; index: number }) {
           </span>
         </div>
 
-        <h3 className="text-white font-bold text-lg tracking-wider mb-5">{card.title}</h3>
+        <h3 className="text-white font-semibold text-sm tracking-widest mb-5 uppercase">{card.title}</h3>
 
         <ul className="space-y-2.5">
           {card.items.map((item) => (
@@ -136,12 +136,12 @@ export default function WhatWeDo() {
             What We Do
           </span>
           <h2
-            className="text-white font-bold leading-tight"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+            className="text-white leading-tight tracking-tight"
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700 }}
           >
             Everything you need to
             <br />
-            <span className="text-white/40">build and scale.</span>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>build and scale.</span>
           </h2>
         </motion.div>
 

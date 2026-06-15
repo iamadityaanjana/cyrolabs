@@ -80,12 +80,12 @@ export default function TechStack() {
             Technology & Ecosystem
           </span>
           <h2
-            className="text-white font-bold leading-tight"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+            className="text-white leading-tight tracking-tight"
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700 }}
           >
             Powered by Leading Technologies
             <br />
-            <span className="text-white/40">& Ecosystems.</span>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>& Ecosystems.</span>
           </h2>
         </motion.div>
 

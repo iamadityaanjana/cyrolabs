@@ -104,7 +104,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
           </span>
           <span className="text-white/30 text-xs font-mono">{project.year}</span>
         </div>
-        <h3 className="text-white font-bold text-xl mb-3 group-hover:text-white/90 transition-colors">
+        <h3 className="text-white font-semibold text-base mb-3 group-hover:text-white/90 transition-colors">
           {project.title}
         </h3>
         <p className="text-white/50 text-sm leading-relaxed">{project.description}</p>
@@ -134,12 +134,12 @@ export default function WhatWeBuilt() {
             What We've Built
           </span>
           <h2
-            className="text-white font-bold leading-tight"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+            className="text-white leading-tight tracking-tight"
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700 }}
           >
             Track record that
             <br />
-            <span className="text-white/40">speaks for itself.</span>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>speaks for itself.</span>
           </h2>
         </motion.div>
 

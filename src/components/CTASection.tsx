@@ -42,8 +42,8 @@ export default function CTASection() {
           </span>
 
           <h2
-            className="text-white font-bold leading-tight mb-6"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
+            className="text-white leading-tight tracking-tight mb-6"
+            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700 }}
           >
             Let's Build Something
             <br />
@@ -59,7 +59,7 @@ export default function CTASection() {
             </span>
           </h2>
 
-          <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-white/45 text-sm md:text-base max-w-xl mx-auto mb-10 leading-relaxed">
             Whether you're a founder, ecosystem, startup, or community — let's create
             something impactful together.
           </p>
@@ -72,17 +72,20 @@ export default function CTASection() {
           >
             <a
               href="mailto:hello@cyrolabs.xyz"
-              className="px-10 py-4 rounded-xl font-semibold text-white transition-all hover:opacity-90 active:scale-95 text-base"
-              style={{ background: 'linear-gradient(135deg, #FF6B35, #FF8C42)' }}
+              className="font-semibold text-white text-sm transition-all hover:brightness-110 active:scale-95"
+              style={{ background: '#FF6C02', padding: '0.7rem 2rem', borderRadius: '0.6rem' }}
             >
               Partner With Us
             </a>
             <a
               href="mailto:hello@cyrolabs.xyz"
-              className="px-10 py-4 rounded-xl font-semibold text-white/80 hover:text-white transition-all text-base border"
+              className="font-medium text-sm transition-all hover:border-white/25 active:scale-95"
               style={{
-                borderColor: 'rgba(255,255,255,0.15)',
-                background: 'rgba(255,255,255,0.05)',
+                color: 'rgba(255,255,255,0.6)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                background: 'rgba(255,255,255,0.04)',
+                padding: '0.7rem 2rem',
+                borderRadius: '0.6rem',
               }}
             >
               Contact Us →

@@ -74,8 +74,8 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         {/* Title */}
         <div className="md:col-span-3 mb-4 md:mb-0">
           <h3
-            className="text-white font-bold group-hover:text-white/90 transition-colors"
-            style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)' }}
+            className="text-white font-semibold group-hover:text-white/90 transition-colors"
+            style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)' }}
           >
             {service.title}
           </h3>
@@ -132,12 +132,12 @@ export default function Services() {
             Services
           </span>
           <h2
-            className="text-white font-bold leading-tight"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+            className="text-white leading-tight tracking-tight"
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700 }}
           >
             What we deliver
             <br />
-            <span className="text-white/40">end to end.</span>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>end to end.</span>
           </h2>
         </motion.div>
 

@@ -99,7 +99,7 @@ function ReasonCard({ reason, index }: { reason: typeof reasons[0]; index: numbe
         >
           {reason.icon}
         </div>
-        <h3 className="text-white font-bold text-lg mb-3">{reason.title}</h3>
+        <h3 className="text-white font-semibold text-base mb-3">{reason.title}</h3>
         <p className="text-white/50 text-sm leading-relaxed">{reason.description}</p>
       </div>
     </motion.div>
@@ -127,12 +127,12 @@ export default function WhyCyroLabs() {
             Why Cyro Labs
           </span>
           <h2
-            className="text-white font-bold leading-tight"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+            className="text-white leading-tight tracking-tight"
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700 }}
           >
             The unfair advantage
             <br />
-            <span className="text-white/40">for founders & ecosystems.</span>
+            <span style={{ color: 'rgba(255,255,255,0.3)' }}>for founders & ecosystems.</span>
           </h2>
         </motion.div>
 

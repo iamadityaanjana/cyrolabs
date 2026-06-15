@@ -38,7 +38,7 @@ export default function Navigation() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 flex items-center justify-between h-16 md:h-20">
+      <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-16 flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -47,28 +47,29 @@ export default function Navigation() {
           <Image
             src="/logo.svg"
             alt="Cyro Labs"
-            width={120}
-            height={17}
+            width={108}
+            height={15}
             priority
-            className="transition-opacity group-hover:opacity-80"
+            className="transition-opacity group-hover:opacity-70"
           />
         </button>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <button
               key={link.id}
               onClick={() => scrollTo(link.id)}
-              className="text-white/70 hover:text-white transition-colors text-sm font-medium"
+              style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.55)', fontWeight: 500 }}
+              className="hover:text-white transition-colors"
             >
               {link.label}
             </button>
           ))}
           <button
             onClick={() => scrollTo('cta')}
-            className="text-white text-sm font-medium px-5 py-2 rounded-lg transition-all hover:opacity-90 active:scale-95"
-            style={{ background: '#FF6B35' }}
+            className="text-white font-semibold transition-all hover:brightness-110 active:scale-95"
+            style={{ background: '#FF6C02', fontSize: '0.8rem', padding: '0.45rem 1.1rem', borderRadius: '0.5rem' }}
           >
             Partner With Us
           </button>
