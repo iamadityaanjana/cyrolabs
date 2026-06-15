@@ -62,7 +62,7 @@ export default function HeroSection({ loading }: HeroSectionProps) {
             style={{ background: '#FF6C02', boxShadow: '0 0 6px #FF6C02' }}
           />
           <span
-            className="text-[11px] font-semibold tracking-[0.2em] uppercase"
+            className="text-[11px] font-semibold  uppercase"
             style={{ color: '#FF6C02' }}
           >
             Venture Studio & Ecosystem Builder

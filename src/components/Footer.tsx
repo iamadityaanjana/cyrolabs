@@ -72,7 +72,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://twitter.com/cyrolabs"
+                  href="https://x.com/cyrofnd"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/50 hover:text-white text-sm transition-colors"
@@ -82,7 +82,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://linkedin.com/company/cyrolabs"
+                  href="https://www.linkedin.com/company/cyro-studios/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/50 hover:text-white text-sm transition-colors"
