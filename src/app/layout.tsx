@@ -13,6 +13,11 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Cyro Labs — Building Products, Communities & Startup Ecosystems",
   description: "Cyro Labs helps founders, startups, and ecosystems launch products, grow communities, and scale innovation through fellowships, hackathons, and world-class development.",
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
