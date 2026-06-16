@@ -3,59 +3,34 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-const techLogos = [
-  { name: 'React', color: '#61DAFB' },
-  { name: 'Next.js', color: '#ffffff' },
-  { name: 'Node.js', color: '#68A063' },
-  { name: 'Python', color: '#3776AB' },
-  { name: 'PostgreSQL', color: '#336791' },
-  { name: 'AWS', color: '#FF9900' },
-  { name: 'Supabase', color: '#3ECF8E' },
-  { name: 'Docker', color: '#2496ED' },
-  { name: 'OpenAI', color: '#10a37f' },
-  { name: 'Anthropic', color: '#D4A574' },
+const techStack = [
+  'React', 'Next.js', 'Node.js', 'Python', 'PostgreSQL',
+  'AWS', 'Supabase', 'Docker', 'OpenAI', 'Anthropic',
 ];
 
-const ecosystemLogos = [
-  { name: 'XION', color: '#FF6B35' },
-  { name: 'Solana', color: '#9945FF' },
-  { name: 'Ethereum', color: '#627EEA' },
-  { name: 'Polygon', color: '#8247E5' },
-  { name: 'Monad', color: '#836EF9' },
-  { name: 'Base', color: '#0052FF' },
+const ecosystems = [
+  'XION', 'Solana', 'Ethereum', 'Polygon', 'Monad', 'Base',
 ];
 
-function LogoBadge({
-  item,
-  index,
-  inView,
-  delay = 0,
-}: {
-  item: { name: string; color: string };
+function Badge({ name, index, inView, delay = 0 }: {
+  name: string;
   index: number;
   inView: boolean;
   delay?: number;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={inView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.4, delay: delay + index * 0.05 }}
-      whileHover={{ scale: 1.05, transition: { duration: 0.15 } }}
-      className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl cursor-default"
+    <motion.span
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.35, delay: delay + index * 0.04 }}
+      className="inline-flex items-center text-sm font-medium text-white/50 px-3.5 py-2 rounded-lg hover:text-white transition-colors cursor-default"
       style={{
         background: 'rgba(255,255,255,0.04)',
         border: '1px solid rgba(255,255,255,0.08)',
       }}
     >
-      <span
-        className="w-2 h-2 rounded-full flex-shrink-0"
-        style={{ background: item.color }}
-      />
-      <span className="text-white/70 group-hover:text-white text-sm font-medium transition-colors">
-        {item.name}
-      </span>
-    </motion.div>
+      {name}
+    </motion.span>
   );
 }
 
@@ -64,68 +39,58 @@ export default function TechStack() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="tech-stack" className="py-24 md:py-32 px-4 md:px-8 lg:px-16 bg-black">
+    <section id="tech-stack" className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-black">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span
-            className="text-xs font-semibold tracking-[0.25em] uppercase mb-4 block"
-            style={{ color: '#FF6B35' }}
-          >
-            Technology & Ecosystem
-          </span>
-          <h2
-            className="text-white leading-tight tracking-tight"
-            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700 }}
-          >
-            Powered by Leading Technologies
-            <br />
-            <span style={{ color: 'rgba(255,255,255,0.3)' }}>& Ecosystems.</span>
-          </h2>
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-        {/* Tech Stack */}
-        <div className="mb-12">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-6"
+          {/* Left: heading + description */}
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-4"
           >
-            Technology Stack
-          </motion.p>
-          <div className="flex flex-wrap gap-3">
-            {techLogos.map((item, i) => (
-              <LogoBadge key={item.name} item={item} index={i} inView={inView} delay={0.25} />
-            ))}
-          </div>
-        </div>
+            <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/30 block mb-4">
+              Technology & Ecosystem
+            </span>
+            <h2
+              className="text-white font-bold leading-tight tracking-[-0.025em] mb-5"
+              style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
+            >
+              Powered by
+              <br />
+              leading technologies.
+            </h2>
+            <p className="text-white/40 text-sm leading-relaxed">
+              We build on modern, battle-tested stacks and operate across the most active
+              blockchain ecosystems.
+            </p>
+          </motion.div>
 
-        {/* Divider */}
-        <div
-          className="w-full h-px mb-12"
-          style={{ background: 'rgba(255,255,255,0.06)' }}
-        />
+          {/* Right: badge groups */}
+          <div className="lg:col-span-8 space-y-10">
+            <div>
+              <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/25 mb-5">
+                Technology Stack
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {techStack.map((name, i) => (
+                  <Badge key={name} name={name} index={i} inView={inView} delay={0.2} />
+                ))}
+              </div>
+            </div>
 
-        {/* Ecosystem */}
-        <div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.4, delay: 0.4 }}
-            className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-6"
-          >
-            Blockchain Ecosystems
-          </motion.p>
-          <div className="flex flex-wrap gap-3">
-            {ecosystemLogos.map((item, i) => (
-              <LogoBadge key={item.name} item={item} index={i} inView={inView} delay={0.45} />
-            ))}
+            <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '2.5rem' }}>
+              <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/25 mb-5">
+                Blockchain Ecosystems
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {ecosystems.map((name, i) => (
+                  <Badge key={name} name={name} index={i} inView={inView} delay={0.38} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

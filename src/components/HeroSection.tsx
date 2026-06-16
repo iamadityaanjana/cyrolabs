@@ -1,169 +1,158 @@
 'use client'
 
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import Navigation from './Navigation';
 
 interface HeroSectionProps {
   loading: boolean;
 }
 
+const stats = [
+  { target: 1200, suffix: '+', label: 'Applications' },
+  { target: 50,   suffix: '+', label: 'Builders' },
+  { target: 10,   suffix: '+', label: 'Programs' },
+  { target: 5,    suffix: '+', label: 'Partners' },
+];
+
+function CountUp({ target, suffix, trigger }: { target: number; suffix: string; trigger: boolean }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!trigger) return;
+    let start = 0;
+    const duration = 1200;
+    const totalSteps = Math.round(duration / 16);
+    const increment = target / totalSteps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [trigger, target]);
+
+  return <>{count}{suffix}</>;
+}
+
 export default function HeroSection({ loading }: HeroSectionProps) {
+  const [statsVisible, setStatsVisible] = useState(false);
+
+  // Trigger count-up after the hero animates in (~0.45s delay + a bit more)
+  useEffect(() => {
+    if (loading) return;
+    const t = setTimeout(() => setStatsVisible(true), 200);
+    return () => clearTimeout(t);
+  }, [loading]);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
   };
 
   return (
-    <div
-      className={`relative min-h-screen w-full flex flex-col overflow-hidden bg-black ${
-        loading ? 'hidden' : 'flex'
-      }`}
-    >
-      {/* Subtle gradient orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[-15%] right-[-5%] w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,107,53,0.14) 0%, transparent 65%)' }}
-        />
-        <motion.div
-          animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
-          className="absolute bottom-[-10%] left-[-8%] w-[400px] h-[400px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,140,66,0.08) 0%, transparent 65%)' }}
-        />
-        {/* Fine grid */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
-            backgroundSize: '72px 72px',
-          }}
-        />
-      </div>
-
+    <div className={`relative min-h-screen w-full flex flex-col bg-black ${loading ? 'hidden' : 'flex'}`}>
       <Navigation />
 
-      {/* Main content */}
-      <main className="flex-1 flex flex-col items-center justify-center text-center px-6 md:px-12 pt-28 pb-20 relative z-10">
+      <main className="flex-1 flex flex-col justify-center px-6 md:px-10 lg:px-16 pt-28 pb-20 w-full max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-10"
-          style={{ borderColor: 'rgba(255,108,2,0.25)', background: 'rgba(255,108,2,0.07)' }}
-        >
-          <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ background: '#FF6C02', boxShadow: '0 0 6px #FF6C02' }}
-          />
-          <span
-            className="text-[11px] font-semibold  uppercase"
-            style={{ color: '#FF6C02' }}
-          >
-            Venture Studio & Ecosystem Builder
-          </span>
-        </motion.div>
+          {/* Left: headline + CTA */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex items-center gap-2 mb-8"
+            >
+              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-[#FF6C02]" />
+              <span className="text-[11px] font-medium tracking-[0.16em] uppercase text-white/35">
+                Venture Studio & Ecosystem Builder
+              </span>
+            </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-4xl leading-[1.1] tracking-[-0.02em]"
-          style={{
-            fontSize: 'clamp(2.1rem, 5vw, 3.75rem)',
-            fontWeight: 700,
-            color: '#fff',
-          }}
-        >
-          Building products,{' '}
-          <span
-            style={{
-              background: 'linear-gradient(135deg, #FF6C02, #FF9A4D)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            communities,
-          </span>{' '}
-          and startup ecosystems.
-        </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-bold text-white tracking-[-0.03em] leading-[1.06]"
+              style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)' }}
+            >
+              Building products,
+              <br />
+              communities, and
+              <br />
+              startup ecosystems.
+            </motion.h1>
 
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.48 }}
-          className="mt-5 max-w-xl leading-relaxed"
-          style={{ fontSize: 'clamp(0.9rem, 1.8vw, 1.05rem)', color: 'rgba(255,255,255,0.48)', fontWeight: 400 }}
-        >
-          Cyro Labs helps founders, startups, and ecosystems launch products,
-          grow communities, and scale innovation.
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.38 }}
+              className="mt-6 max-w-sm text-white/45 leading-relaxed text-sm"
+            >
+              We help founders, startups, and ecosystems launch products,
+              grow communities, and scale innovation.
+            </motion.p>
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.62 }}
-          className="mt-9 flex flex-col sm:flex-row gap-3 items-center"
-        >
-          <button
-            onClick={() => scrollTo('what-we-built')}
-            className="px-7 py-3 rounded-lg font-semibold text-white text-sm transition-all hover:brightness-110 active:scale-95"
-            style={{ background: '#FF6C02' }}
-          >
-            View Our Work
-          </button>
-          <button
-            onClick={() => scrollTo('cta')}
-            className="px-7 py-3 rounded-lg font-medium text-sm transition-all hover:border-white/30 active:scale-95"
-            style={{
-              color: 'rgba(255,255,255,0.65)',
-              border: '1px solid rgba(255,255,255,0.12)',
-              background: 'rgba(255,255,255,0.04)',
-            }}
-          >
-            Partner With Us →
-          </button>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16"
-        >
-          {[
-            { value: '1200+', label: 'Applications' },
-            { value: '50+', label: 'Builders' },
-            { value: '10+', label: 'Programs' },
-            { value: '5+', label: 'Partners' },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <div
-                className="font-bold tracking-tight leading-none mb-1.5"
-                style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: '#FF6C02' }}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.52 }}
+              className="mt-8 flex items-center gap-5"
+            >
+              <button
+                onClick={() => scrollTo('what-we-built')}
+                className="px-5 py-2.5 bg-[#FF6C02] hover:bg-[#e06002] text-white text-sm font-semibold rounded-lg transition-colors cursor-pointer"
               >
-                {s.value}
-              </div>
-              <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.38)', letterSpacing: '0.06em' }}>
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </main>
+                View Our Work
+              </button>
+              <button
+                onClick={() => scrollTo('cta')}
+                className="text-sm text-white/40 hover:text-white transition-colors font-medium cursor-pointer"
+              >
+                Partner With Us →
+              </button>
+            </motion.div>
+          </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+          {/* Right: animated stats grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+            className="grid grid-cols-2 gap-px"
+            style={{ border: '1px solid rgba(255,255,255,0.07)', borderRadius: '1rem', overflow: 'hidden' }}
+          >
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className="flex flex-col justify-between p-8 md:p-10"
+                style={{
+                  background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : '#050505',
+                  borderRight: i % 2 === 0 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                  borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                }}
+              >
+                <span
+                  className="font-bold text-white tracking-tight leading-none tabular-nums"
+                  style={{ fontSize: 'clamp(2.75rem, 5vw, 4rem)' }}
+                >
+                  <CountUp target={s.target} suffix={s.suffix} trigger={statsVisible} />
+                </span>
+                <span className="text-sm text-white/35 mt-3">{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
+
+        </div>
+      </main>
     </div>
   );
 }

@@ -10,30 +10,23 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-black px-4 md:px-8 lg:px-16 py-12"
+      className="bg-black px-6 md:px-10 lg:px-16 py-12"
       style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
           <div className="md:col-span-2">
-            <div className="mb-4">
-              <Image
-                src="/logo.svg"
-                alt="Cyro Labs"
-                width={120}
-                height={17}
-              />
+            <div className="mb-4 opacity-80">
+              <Image src="/logo.svg" alt="Cyro Labs" width={108} height={15} />
             </div>
-            <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Building products, communities, and startup ecosystems. We help founders launch
-              and scale what matters.
+            <p className="text-white/35 text-sm leading-relaxed max-w-xs">
+              Building products, communities, and startup ecosystems. We help founders
+              launch and scale what matters.
             </p>
           </div>
 
-          {/* Links */}
           <div>
-            <p className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-4">
+            <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-white/25 mb-5">
               Navigate
             </p>
             <ul className="space-y-3">
@@ -47,7 +40,7 @@ export default function Footer() {
                 <li key={link.id}>
                   <button
                     onClick={() => scrollTo(link.id)}
-                    className="text-white/50 hover:text-white text-sm transition-colors"
+                    className="text-white/40 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </button>
@@ -56,16 +49,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <p className="text-white/30 text-xs font-semibold tracking-widest uppercase mb-4">
+            <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-white/25 mb-5">
               Contact
             </p>
             <ul className="space-y-3">
               <li>
                 <a
                   href="mailto:hello@cyrolabs.xyz"
-                  className="text-white/50 hover:text-white text-sm transition-colors"
+                  className="text-white/40 hover:text-white text-sm transition-colors"
                 >
                   hello@cyrolabs.xyz
                 </a>
@@ -75,7 +67,7 @@ export default function Footer() {
                   href="https://x.com/cyrofnd"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/50 hover:text-white text-sm transition-colors"
+                  className="text-white/40 hover:text-white text-sm transition-colors"
                 >
                   Twitter / X
                 </a>
@@ -85,7 +77,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/company/cyro-studios/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/50 hover:text-white text-sm transition-colors"
+                  className="text-white/40 hover:text-white text-sm transition-colors"
                 >
                   LinkedIn
                 </a>
@@ -94,19 +86,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
         <div
-          className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8"
+          className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-8"
           style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
         >
-          <p className="text-white/30 text-sm">
+          <p className="text-white/25 text-xs">
             &copy; {new Date().getFullYear()} Cyro Labs. All rights reserved.
           </p>
-          <div className="flex items-center gap-1">
-            <span className="text-white/20 text-xs">Built with</span>
-            <span className="text-white/30 text-xs mx-1">♥</span>
-            <span className="text-white/20 text-xs">by Cyro Labs</span>
-          </div>
+          <p className="text-white/20 text-xs">Built by Cyro Labs</p>
         </div>
       </div>
     </footer>

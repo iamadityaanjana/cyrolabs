@@ -49,7 +49,7 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
   useEffect(() => {
     if (!inView) return;
     let start = 0;
-    const duration = 1500;
+    const duration = 1400;
     const step = Math.ceil(target / (duration / 16));
     const timer = setInterval(() => {
       start += step;
@@ -71,121 +71,93 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
   );
 }
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative rounded-2xl p-7 overflow-hidden"
-      style={{
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.07)',
-      }}
-    >
-      <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle at bottom right, rgba(255,107,53,0.06) 0%, transparent 70%)',
-        }}
-      />
-      <div className="relative z-10">
-        <div className="flex items-start justify-between mb-4">
-          <span
-            className="text-xs font-semibold tracking-widest uppercase px-2.5 py-1 rounded-full"
-            style={{ color: '#FF6B35', background: 'rgba(255,107,53,0.1)' }}
-          >
-            {project.tag}
-          </span>
-          <span className="text-white/30 text-xs font-mono">{project.year}</span>
-        </div>
-        <h3 className="text-white font-semibold text-base mb-3 group-hover:text-white/90 transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-white/50 text-sm leading-relaxed">{project.description}</p>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function WhatWeBuilt() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="what-we-built" className="py-24 md:py-32 px-4 md:px-8 lg:px-16 bg-black">
+    <section id="what-we-built" className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-black">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-14"
         >
-          <span
-            className="text-xs font-semibold tracking-[0.25em] uppercase mb-4 block"
-            style={{ color: '#FF6B35' }}
-          >
+          <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/30 block mb-4">
             What We've Built
           </span>
           <h2
-            className="text-white leading-tight tracking-tight"
-            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700 }}
+            className="text-white font-bold leading-tight tracking-[-0.025em] max-w-lg"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
             Track record that
             <br />
-            <span style={{ color: 'rgba(255,255,255,0.3)' }}>speaks for itself.</span>
+            speaks for itself.
           </h2>
         </motion.div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        {/* Stats — bordered table cells */}
+        <div
+          className="grid grid-cols-2 lg:grid-cols-4 mb-16"
+          style={{
+            borderTop: '1px solid rgba(255,255,255,0.08)',
+            borderBottom: '1px solid rgba(255,255,255,0.08)',
+          }}
+        >
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.15 + i * 0.1 }}
-              className="rounded-2xl p-6 text-center"
-              style={{
-                background: 'rgba(255,107,53,0.05)',
-                border: '1px solid rgba(255,107,53,0.15)',
-              }}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
+              className="py-8 px-6"
+              style={i > 0 ? { borderLeft: '1px solid rgba(255,255,255,0.08)' } : {}}
             >
-              <div
-                className="text-4xl md:text-5xl font-bold mb-2"
-                style={{ color: '#FF6B35' }}
-              >
+              <div className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-1.5">
                 <CountUp target={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-white/50 text-sm">{stat.label}</div>
+              <div className="text-sm text-white/35">{stat.label}</div>
             </motion.div>
           ))}
         </div>
 
-        {/* Divider */}
-        <div
-          className="w-full h-px mb-16"
-          style={{ background: 'rgba(255,255,255,0.06)' }}
-        />
-
         {/* Project highlights */}
-        <motion.h3
+        <motion.p
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-white/40 text-sm font-semibold tracking-widest uppercase mb-8"
+          transition={{ duration: 0.4, delay: 0.4 }}
+          className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/25 mb-8"
         >
           Project Highlights
-        </motion.h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        </motion.p>
+
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
           {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 14 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.45, delay: 0.5 + i * 0.08 }}
+              className="group py-7 grid grid-cols-12 gap-x-6 items-start"
+              style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
+            >
+              <div className="col-span-12 md:col-span-6">
+                <h3 className="text-white font-semibold text-sm md:text-base mb-2 group-hover:text-white/75 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-white/40 text-sm leading-relaxed">{project.description}</p>
+              </div>
+              <div className="hidden md:flex col-span-4 items-start pt-0.5">
+                <span className="text-xs text-white/30 uppercase tracking-widest font-medium">
+                  {project.tag}
+                </span>
+              </div>
+              <div className="hidden md:flex col-span-2 justify-end items-start pt-0.5">
+                <span className="text-xs text-white/20 font-mono">{project.year}</span>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

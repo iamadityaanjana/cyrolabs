@@ -34,77 +34,47 @@ const services = [
   },
 ];
 
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
+function ServiceRow({ service, index }: { service: typeof services[0]; index: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative overflow-hidden"
-      style={{
-        borderBottom: '1px solid rgba(255,255,255,0.07)',
-        paddingTop: '3rem',
-        paddingBottom: '3rem',
-      }}
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.09 }}
+      className="group py-8 md:py-10 grid md:grid-cols-12 gap-y-4 gap-x-6 items-start"
+      style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
     >
-      {/* Hover line */}
-      <motion.div
-        className="absolute left-0 top-0 h-full w-0.5 origin-top"
-        initial={{ scaleY: 0 }}
-        whileHover={{ scaleY: 1 }}
-        transition={{ duration: 0.3 }}
-        style={{ background: '#FF6B35' }}
-      />
+      <div className="hidden md:block md:col-span-1 pt-0.5">
+        <span className="text-xs font-mono text-white/20">{service.number}</span>
+      </div>
 
-      <div className="pl-6 md:pl-0 md:grid md:grid-cols-12 md:gap-8 items-start">
-        {/* Number */}
-        <div className="md:col-span-1 mb-4 md:mb-0">
-          <span
-            className="text-sm font-mono font-bold"
-            style={{ color: 'rgba(255,107,53,0.6)' }}
-          >
-            {service.number}
-          </span>
-        </div>
+      <div className="md:col-span-3">
+        <h3 className="text-white font-semibold text-base group-hover:text-white/70 transition-colors">
+          {service.title}
+        </h3>
+      </div>
 
-        {/* Title */}
-        <div className="md:col-span-3 mb-4 md:mb-0">
-          <h3
-            className="text-white font-semibold group-hover:text-white/90 transition-colors"
-            style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)' }}
-          >
-            {service.title}
-          </h3>
-        </div>
+      <div className="md:col-span-5">
+        <p className="text-white/40 text-sm leading-relaxed">{service.description}</p>
+      </div>
 
-        {/* Description */}
-        <div className="md:col-span-5 mb-4 md:mb-0">
-          <p className="text-white/50 leading-relaxed text-sm md:text-base">
-            {service.description}
-          </p>
-        </div>
-
-        {/* Tags */}
-        <div className="md:col-span-3">
-          <div className="flex flex-wrap gap-2">
-            {service.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs px-2.5 py-1 rounded-lg font-medium"
-                style={{
-                  color: 'rgba(255,255,255,0.5)',
-                  background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+      <div className="md:col-span-3">
+        <div className="flex flex-wrap gap-1.5">
+          {service.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-[11px] px-2.5 py-1 rounded font-medium text-white/35"
+              style={{
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.07)',
+              }}
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
     </motion.div>
@@ -116,36 +86,31 @@ export default function Services() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="services" className="py-24 md:py-32 px-4 md:px-8 lg:px-16 bg-black">
+    <section id="services" className="py-24 md:py-32 px-6 md:px-10 lg:px-16 bg-black">
       <div className="max-w-7xl mx-auto">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <span
-            className="text-xs font-semibold tracking-[0.25em] uppercase mb-4 block"
-            style={{ color: '#FF6B35' }}
-          >
+          <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/30 block mb-4">
             Services
           </span>
           <h2
-            className="text-white leading-tight tracking-tight"
-            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 700 }}
+            className="text-white font-bold leading-tight tracking-[-0.025em] max-w-lg"
+            style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)' }}
           >
-            What we deliver
+            What we deliver,
             <br />
-            <span style={{ color: 'rgba(255,255,255,0.3)' }}>end to end.</span>
+            end to end.
           </h2>
         </motion.div>
 
-        <div
-          style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
-        >
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
           {services.map((service, i) => (
-            <ServiceCard key={service.title} service={service} index={i} />
+            <ServiceRow key={service.title} service={service} index={i} />
           ))}
         </div>
       </div>
